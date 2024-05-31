@@ -5,7 +5,7 @@
     <vendor>skleprozzz</vendor>
 
     <depends>com.intellij.modules.platform</depends>
-
+    <depends>org.jetbrains.kotlin</depends>
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
