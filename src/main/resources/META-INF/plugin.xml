@@ -6,13 +6,17 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.kotlin</depends>
-    <resource-bundle>messages.MyBundle</resource-bundle>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.skleprozzz.intellijfluttercleanfeature.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
+    <actions>
+        <action id="GenerateCleanCode.NewAction"
+                icon="/META-INF/ic_action_icon.svg"
+                class="com.github.skleprozzz.intellijfluttercleanfeature.GenerateFolderStructureAction"
+                text="Create New Flutter Clean Feature">
+            <add-to-group group-id="NewGroup" anchor="last"/>
+        </action>
+    </actions>
 
-    <applicationListeners>
-        <listener class="com.github.skleprozzz.intellijfluttercleanfeature.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+<!--    <applicationListeners>-->
+<!--        <listener class="com.github.skleprozzz.intellijfluttercleanfeature.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>-->
+<!--    </applicationListeners>-->
 </idea-plugin>
