@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.skleprozzz.intellijfluttercleanfeature</id>
-    <name>intellij_flutter_clean_feature</name>
+    <name>flutter Clean Feature</name>
     <vendor>skleprozzz</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -16,7 +16,7 @@
         </action>
     </actions>
 
-<!--    <applicationListeners>-->
-<!--        <listener class="com.github.skleprozzz.intellijfluttercleanfeature.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>-->
-<!--    </applicationListeners>-->
+    <!--    <applicationListeners>-->
+    <!--        <listener class="com.github.skleprozzz.intellijfluttercleanfeature.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>-->
+    <!--    </applicationListeners>-->
 </idea-plugin>
