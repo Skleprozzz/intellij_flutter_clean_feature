@@ -3,12 +3,12 @@ package com.github.skleprozzz.intellijfluttercleanfeature
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.project.guessProjectDir
 import com.intellij.openapi.ui.Messages
 import com.intellij.openapi.vfs.VirtualFile
 import java.util.*
+
 
 class GenerateFolderStructureAction : AnAction() {
     override fun actionPerformed(event: AnActionEvent) {
@@ -17,17 +17,15 @@ class GenerateFolderStructureAction : AnAction() {
         ApplicationManager.getApplication().runWriteAction {
             if (dialog.isOK) {
                 val featureName = dialog.featureName
-                generateFolderStructure(event.project, featureName)
+                val libDir = event.getData(PlatformDataKeys.VIRTUAL_FILE)
+                generateFolderStructure(libDir, featureName)
             }
         }
 
     }
 
-    private fun generateFolderStructure(project: Project?, featureName: String) {
-        if (project != null) {
-            val baseDir = project.guessProjectDir()
-            val libDir = findLibDirectory(baseDir) ?: return
-//            val packageName = getPackageName(project) ?: return
+    private fun generateFolderStructure(libDir: VirtualFile?, featureName: String) {
+        if (libDir != null) {
             val featureDir = libDir.createChildDirectory(null, featureName)
 
             /// data
@@ -105,40 +103,13 @@ class GenerateFolderStructureAction : AnAction() {
             )
 
             showToastMessage("Generated Successfully!")
+
         }
     }
 
     private fun String.toCamelCase(): String {
         return this.split("_")
             .joinToString("") { it.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }
-    }
-
-    private fun findLibDirectory(baseDir: VirtualFile?): VirtualFile? {
-        // Look for the "lib" directory directly in the base directory
-        val libDir = baseDir?.findChild("lib")
-        return if (libDir != null && libDir.isDirectory) {
-            /*            val featureDir = libDir.findChild("features")
-                        if (featureDir != null && featureDir.isDirectory) {
-                            featureDir
-                        } else {
-                            libDir.createChildDirectory(null, "feature")
-                        }*/
-            findFeatureDir(libDir)
-
-        } else {
-            // If "lib" directory not found, create one
-            val newLibDir = baseDir?.createChildDirectory(null, "lib")
-            findFeatureDir(newLibDir)
-        }
-    }
-
-    private fun findFeatureDir(libDir: VirtualFile?): VirtualFile? {
-        val featureDir = libDir?.findChild("features")
-        return if (featureDir != null && featureDir.isDirectory) {
-            featureDir
-        } else {
-            libDir?.createChildDirectory(null, "features")
-        }
     }
 
     private fun showToastMessage(message: String) {
@@ -284,7 +255,7 @@ class GenerateFolderStructureAction : AnAction() {
                 |  Widget build(BuildContext context) {
                 |    return BlocProvider<${featureName.toCamelCase()}Bloc>(
                 |      create: (_) => <${featureName.toCamelCase()}Bloc>(),
-                |      child: SizedBox.shrink(),
+                |      child: const SizedBox(),
                 |    );
                 |  }
                 |}
