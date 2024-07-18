@@ -7,6 +7,11 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.kotlin</depends>
 
+    <description><![CDATA[
+        Plugin for fast generation of the feature structure
+    ]]></description>
+
+
     <actions>
         <action id="GenerateCleanCode.NewAction"
                 icon="/META-INF/ic_action_icon.svg"
