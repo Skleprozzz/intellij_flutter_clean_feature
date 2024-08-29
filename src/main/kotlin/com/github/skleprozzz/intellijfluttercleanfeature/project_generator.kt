@@ -314,19 +314,19 @@ class GenerateFolderStructureAction : AnAction() {
             |
             |@module
             |abstract class ${featureName.toCamelCase()}Module {
-            |  ${featureName.toCamelCase()}DataSource dataSource(NetworkService service) =>
+            |  ${featureName.toCamelCase()}DataSource get${featureName.toCamelCase()}DataSource(NetworkService service) =>
             |      ${featureName.toCamelCase()}DataSource(service: service);
             |
-            |  ${featureName.toCamelCase()}RepositoryInterface repository(${featureName.toCamelCase()}DataSource dataSource) =>
+            |  ${featureName.toCamelCase()}RepositoryInterface get${featureName.toCamelCase()}RepositoryInterface(${featureName.toCamelCase()}DataSource dataSource) =>
             |      ${featureName.toCamelCase()}Repository(dataSource: dataSource);
             |
-            |  ${featureName.toCamelCase()}UseCase useCase(${featureName.toCamelCase()}RepositoryInterface repository) =>
+            |  ${featureName.toCamelCase()}UseCase get${featureName.toCamelCase()}UseCase(${featureName.toCamelCase()}RepositoryInterface repository) =>
             |      ${featureName.toCamelCase()}UseCase(repository: repository);
             |
-            |  ${featureName.toCamelCase()}Service service(${featureName.toCamelCase()}RepositoryInterface repository) =>
+            |  ${featureName.toCamelCase()}Service get${featureName.toCamelCase()}Service(${featureName.toCamelCase()}RepositoryInterface repository) =>
             |      ${featureName.toCamelCase()}Service(repository: repository);
             |
-            |  ${featureName.toCamelCase()}Bloc bloc(${featureName.toCamelCase()}UseCase useCase) =>
+            |  ${featureName.toCamelCase()}Bloc get${featureName.toCamelCase()}Bloc(${featureName.toCamelCase()}UseCase useCase) =>
             |     ${featureName.toCamelCase()}Bloc(useCase: useCase);
             |}
             

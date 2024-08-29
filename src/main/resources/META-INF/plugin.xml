@@ -4,12 +4,13 @@
     <name>Flutter Clean Feature</name>
     <vendor>skleprozzz</vendor>
 
+    <description><![CDATA[
+        Plugin for fast generation of the feature structure!
+        Just click on folder with right click and select "Create New Flutter Clean Feature"
+    ]]></description>
+
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.kotlin</depends>
-
-    <description><![CDATA[
-        Plugin for fast generation of the feature structure
-    ]]></description>
 
 
     <actions>
