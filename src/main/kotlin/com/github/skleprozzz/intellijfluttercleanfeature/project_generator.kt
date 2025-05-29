@@ -289,7 +289,7 @@ class GenerateFolderStructureAction : AnAction() {
                 |part of '${featureName}_bloc.dart';
                 |
                 |@freezed
-                |abstract class ${featureName.toCamelCase()}Event  with _$${featureName.toCamelCase()}Event {
+                |sealed class ${featureName.toCamelCase()}Event  with _$${featureName.toCamelCase()}Event {
                 |  const factory ${featureName.toCamelCase()}Event.init() = Init;
                 |}
                 |
@@ -301,7 +301,7 @@ class GenerateFolderStructureAction : AnAction() {
                 |part of '${featureName}_bloc.dart';
                 |
                 |@freezed
-                |abstract class ${featureName.toCamelCase()}State with _$${featureName.toCamelCase()}State {
+                |sealed class ${featureName.toCamelCase()}State with _$${featureName.toCamelCase()}State {
                 |  const factory ${featureName.toCamelCase()}State() = _${featureName.toCamelCase()}State;
                 |}
                 |
