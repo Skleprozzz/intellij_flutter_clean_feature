@@ -12,10 +12,19 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.kotlin</depends>
 
-    <extensions defaultExtensionNs="org.jetbrains.kotlin">
-        <supportsKotlinPluginMode supportsK2="true" />
-    </extensions>
+<!--    <extensions defaultExtensionNs="org.jetbrains.kotlin">-->
+<!--        <supportsKotlinPluginMode supportsK2="true" />-->
+<!--    </extensions>-->
 
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService
+                serviceImplementation="com.github.skleprozzz.intellijfluttercleanfeature.settings.MyPluginSettings"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.github.skleprozzz.intellijfluttercleanfeature.settings.MyPluginConfigurable"
+                id="GenerateCleanCode.Settings"
+                displayName="Clean Feature Folder Name"/>
+    </extensions>
 
     <actions>
         <action id="GenerateCleanCode.NewAction"
