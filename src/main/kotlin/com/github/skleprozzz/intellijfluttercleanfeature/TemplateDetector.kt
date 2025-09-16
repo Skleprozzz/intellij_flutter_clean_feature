@@ -26,12 +26,15 @@ class TemplateDetector {
         }
 
         fun getTemplateDirectory(project: Project): VirtualFile? {
-            var currentValue: String? = MyPluginSettings.getInstance().myTextFieldValue
+            val currentValue: String? = MyPluginSettings.getInstance().myTextFieldValue
 
             val baseDir = project.getBaseDir()
+
             if (baseDir == null) return null
 
             return baseDir.findChild(currentValue ?:".flutter_clean_feature_template")
         }
     }
+
+
 }
